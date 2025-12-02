@@ -1,4 +1,3 @@
-#include "fem/fe_coll.hpp"
 #include "mfem.hpp"
 #include <chrono>
 #include <random>
@@ -25,7 +24,7 @@ int main(int argc, char *argv[]) {
   std::string mesh_sizes[] = {"8", "16", "24", "32", "48", "64"};
   for (std::string shape : shapes) {
     for (std::string mesh_size : mesh_sizes) {
-      std::string mesh_path_prefix = "../nektar-benchmark_mesh/cube";
+      std::string mesh_path_prefix = "/home/dbr25/MFEM-benchmark_bckp/nektar-benchmark_mesh/cube";
       std::string mesh_path_suffix = "_mesh.msh";
 
       std::string mesh_path =
@@ -48,8 +47,9 @@ int main(int argc, char *argv[]) {
         yv.UseDevice(true);
 
         BilinearForm a_mass(&fes);
+        //a_mass.AddDomainIntegrator(new DiffusionIntegrator());
         a_mass.AddDomainIntegrator(new MassIntegrator());
-        a_mass.SetAssemblyLevel(AssemblyLevel::ELEMENT);
+        a_mass.SetAssemblyLevel(AssemblyLevel::PARTIAL);
         a_mass.Assemble();
         for (int i = 0; i < N_warmup; ++i) {
           a_mass.Mult(xv, yv);
