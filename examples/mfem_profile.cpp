@@ -72,9 +72,9 @@ int main(int argc, char *argv[]) {
           for (int i = 0; i < N_warmup; ++i) {
             oper.Mult(xv, yv);
           }
+          cudaDeviceSynchronize();
           std::chrono::steady_clock::time_point begin =
               std::chrono::steady_clock::now();
-          cudaDeviceSynchronize();
           for (int i = 0; i < N_test; ++i) {
             oper.Mult(xv, yv);
           }
