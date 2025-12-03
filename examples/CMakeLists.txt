@@ -11,6 +11,7 @@
 
 list(APPEND ALL_EXE_SRCS
   ProfilerElmtOps.cpp
+  ProfilerBP.cpp
   ex0.cpp
   ex1.cpp
   ex2.cpp
