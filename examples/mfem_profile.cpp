@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
           auto ndofs = static_cast<std::int64_t>(fes.GetNDofs());
           auto ntest = static_cast<std::int64_t>(N_test);
           double total_dofs_per_second = ndofs / time_diff_avg * 1e6;
-          std::ofstream out_file("log_mfem_profilerElmtOps_" + operator_name, std::ios::app);
+          std::ofstream out_file("log_mfem_profilerElmtOps_" + operator_name + ".log", std::ios::app);
           out_file << mesh_size << " " << ndofs << " " << order << " "
                     << total_dofs_per_second << std::endl;
 
