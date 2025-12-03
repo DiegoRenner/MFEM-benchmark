@@ -10,7 +10,7 @@
 # CONTRIBUTING.md for details.
 
 list(APPEND ALL_EXE_SRCS
-  mfem_profile.cpp
+  ProfilerElmtOps.cpp
   ex0.cpp
   ex1.cpp
   ex2.cpp
