@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   //std::cout << "Order | NumElements | GlobalDoFs | TimePerCGIter (us)\n";
   //std::cout << "--------------------------------------------------------\n";
 
-  std::string mesh_sizes[] = {"8", "16", "24", "32", "48"};
+  std::string mesh_sizes[] = {"8", "16", "24", "32", "48", "64"};
   std::string operators[] = {"Mass", "Helmholtz"};
 
   for (std::string operator_name: operators) {
