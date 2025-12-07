@@ -38,6 +38,9 @@ for oper_name in oper_names:
     ax.legend()
 
     plt.tight_layout()
-    plt.savefig(oper_name + "_BP1_MFEM_GH200.png")
+    if oper_name == "Mass":
+        plt.savefig(oper_name + "_BP1_MFEM_GH200.png")
+    else:
+        plt.savefig(oper_name + "_BP3_MFEM_GH200.png")
     plt.show()
     plt.close()
