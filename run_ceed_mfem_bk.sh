@@ -19,7 +19,10 @@ read -ra backends <<< "${BACKENDS:-cuda ceed-cuda:/gpu/cuda/gen ceed-cuda:/gpu/c
 SHAPES=${SHAPES:-"Hex"}
 SIZES=${SIZES:-"8 16 24 32 48 64"}
 ORDERS=${ORDERS:-"1 2 3 4 5 6 7"}
-for sh in $SHAPES; do rm -f mfem_ceed_*_"$sh".log; done
+# NOCLEAN=1 skips cleanup -> append mode (gap-fill runs)
+if [ -z "${NOCLEAN:-}" ]; then
+  for sh in $SHAPES; do rm -f mfem_ceed_*_"$sh".log; done
+fi
 for be in "${backends[@]}"; do
   for op in Mass Stiffness; do
     for sh in $SHAPES; do
